@@ -1,0 +1,126 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Project>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Project </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Project Created</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h5>Project </h5>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                @*<th>
+                                        @Html.DisplayNameFor(model => model.ProjectId})
+                                    </th>*@
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    description
+                                </th>
+                                <th>
+                                    deadline
+                                </th>
+                                <th>
+                                    state
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="SearchBody"></tbody>
+                        <tbody id="TbodyToHide" class="datatoshow">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    @*<td>
+                                            @Html.DisplayFor(modelItem => item.ProjectId)
+                                        </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProjectDescrption)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeadLine)
+                                    </td>
+                                    <td>
+                                        @if (item.StateId == 1)
+                                        {
+                                            <span class="badge badge-success">Completed</span>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <span class="badge badge-warning">Pending</span>
+
+                                        }
+                                        else if (item.StateId == 4)
+                                        {
+                                            <span class="badge badge-danger">Rejected</span>
+
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/Project/SearchProjct',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: { Search: search },
+            success: function (data) {
+                $("#SearchBody").empty();
+                $("#TbodyToHide").hide();
+                $.each(data, function (index, value) {
+                    $("#SearchBody").show();
+                    $("#SearchBody").append('<tr><td>' + value.projectName + '</td><td>'
+                        +
+                        value.projectDescrption
+                        +
+                        '</td><td>' +
+                        value.deadLine
+                        + '</td>'
+                        + ((value.stateId == 1) ? '<td><span class="badge badge-success">Completed</span></td>' : '<td><span class="badge badge-warning">Pending</span></td>')
+                    );
+                }
+                );
+                if (data == 0) {
+                    $("#SearchBody").empty();
+                    $("#SearchBody").hide();
+                }
+                if ($("#Serachajax").val() == 0) {
+                    $("#TbodyToHide").show();
+                }
+
+            }
+        })
+    })
+</script>

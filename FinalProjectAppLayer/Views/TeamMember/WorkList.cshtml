@@ -1,0 +1,234 @@
+﻿@using BusniessLayer.Entity
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects"><i class="feather icon-home"></i></a></li>
+
+                    <li class="breadcrumb-item"><a asp-action="SprintList">All Work</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-9">
+        @{
+
+            if (ViewBag.Dutystate.StateId == 1)
+            {
+                <div class="alert alert-success" role="alert">
+                    The Work Of this Duty Is submit Successfully And The Duties State Is Completed..!
+                </div>
+            }
+            else
+            {
+                <a href="/TeamMember/NewWork?DutyId=@ViewBag.DutyId" class="btn btn-info">New Work</a>
+            }
+        }
+    </div>
+    @{
+        if (ViewBag.Dutystate.StateId == 1)
+        {
+        }
+        //var Count = ((List<Work>)ViewBag.WorkList).Count();
+        else if (((List<Work>)ViewBag.WorkList).Count() == 0)
+        {
+            <div class="col-2 ">
+                <button disabled class="btn btn-warning">Done</button>
+            </div>
+        }
+        else if (ViewBag.WorkCount == ((List<Work>)ViewBag.WorkList).Count())
+        {
+            <div class="col-2">
+                <a href="/TeamMember/WorkDone?DutyId=@ViewBag.DutyId" disabled class="btn btn-warning" id="Jdone">Done</a>
+            </div>
+        }
+        else
+        {
+            <div class="col-2">
+                <button href="#" class="btn btn-warning" disabled>Done</button>
+            </div>
+        }
+    }
+</div>
+<div id="DivToShow"></div>
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ foreach (var item in (List<Work>)ViewBag.WorkList)
+                                {
+                                    <tr id="@item.WorkId">
+                                        <td>
+                                            @item.WorkName
+                                        </td>
+                                        <td>
+                                            @item.WorkDescrption
+                                        </td>
+                                        @{foreach (var State in (List<State>)ViewBag.State)
+                                            {
+                                                if (item.StateId == State.StateId)
+                                                {
+                                                    if (State.StateId == 1 || State.StateId == 2)
+                                                    {
+                                                        <td style="color:green">
+                                                            @State.StateName
+                                                        </td>
+                                                    }
+                                                    else if (State.StateId == 3)
+                                                    {
+                                                        <td style="color:orange">
+                                                            @State.StateName
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td style="color:red">
+                                                            @State.StateName
+                                                        </td>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        <td>
+                                            @if (@ViewBag.Dutystate.StateId == 1)
+                                            {
+                                                <button onclick="WorkView('@item.WorkId')" class="btn btn-outline-info">View</button>
+                                            }
+                                            else if (item.StateId == 4 || item.StateId == 3)
+                                            {
+                                                <button onclick="EditWork('@item.WorkId')" class="btn btn-success">Edit</button>
+                                                <button onclick="WorkView('@item.WorkId')" class="btn btn-outline-info">View</button>
+                                            }
+
+                                            else
+                                            {
+                                                <button onclick="WorkView('@item.WorkId')" class="btn btn-outline-info">View</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (TempData["insert"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            SuccsesMessage("Work")
+
+        })
+    </script>
+}
+@if (TempData["update"] != null)
+{
+    <script>
+
+        $(document).ready(function () {
+            EditMessage("Work");
+        })
+    </script>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            }
+            return decodeURI(results[1]) || 0;
+        }
+
+        $("#Serachajax").on('keyup', function () {
+
+            var search = $(this).val();
+            var duty = $.urlParam('DutyId');
+            $.ajax({
+                method: 'POST',
+                url: '/Work/SearchForDutyWork',
+                data: { Search: search, DutyId: duty },
+                success: function (data) {
+                    $("#footer").remove();
+                    $('tbody tr').each(function () {
+                        $(this).prop('hidden', true)
+                    });
+                    if (data.length == 0) {
+                        debugger;
+                        $("#footer").remove();
+                        $('tfoot').append('<tr id="footer"><td><div style="color:red"> No result found </div></td></td>')
+                    }
+
+                    $.each(data, function (ind, vls) {
+                        $('tbody tr').each(function () {
+                            $("#footer").remove();
+                            var x = $(this).attr('id');
+                            if (x == vls.workId) {
+                                $("#" + x).prop('hidden', false)
+                            }
+                        })
+                    })
+                    if ($("#Serachajax").val() == 0) {
+                        $("tfoot").empty();
+                        $('tbody tr').each(function () {
+                            $(this).prop('hidden', false);
+
+                        });
+                    }
+
+                }
+
+            })
+        })
+    })
+</script>
+<script>
+    WorkView = function (workId) {
+        var url = '/TeamMember/ViewWork?WorkId=' + workId
+        $('#DivToShow').load(url, function () {
+            $('#EditModal').modal('show');
+        })
+    }
+</script>
+<script>
+    EditWork = function (workId) {
+        var url = '/TeamMember/WrokEditpartial?WorkId=' + workId
+        $('#DivToShow').load(url, function () {
+            $('#EditModal').modal('show');
+        })
+    }
+</script>

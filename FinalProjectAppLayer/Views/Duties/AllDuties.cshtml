@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Duty>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Duties </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Duties created</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-lg-10">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    name
+                                </th>
+                                <th>
+                                    description
+                                </th>
+                                <th>
+                                    Sprint Name
+                                </th>
+                                <th>
+                                    Member Name
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="AjaxAppend"></tbody>
+                        <tbody id="AjaxHide">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DutyName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DutyDescrption)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sprint.SprintName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TeamMember.FitstName)
+                                    </td>
+                                    <td>
+                                        @if (item.StateId == 1)
+                                        {
+                                            <span class="badge badge-success">Completed</span>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <span class="badge badge-warning">Pending</span>
+
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/Duties/SearchDuties',
+            data: { Search: search },
+            success: function (data) {
+                $("#AjaxHide").hide();
+                $("#AjaxAppend").empty();
+
+                $.each(data, function (index, value) {
+                    $("#AjaxAppend").append('<tr><td>' + value.dutyId + '</td><td>' + value.dutyName + '</td><td>' + value.dutyDescrption
+                        + '</td><td>' + value.sprintName + '</td><td>' + value.userName + '</td>'
+                        + '<td>' + ((value.stateId) == 1 ? '<span class="badge badge-success">Completed</span>' : '<span class="badge badge-warning">Pending</span>') + '</td>'
+                        +
+                        '</tr>');
+                })
+                if ($("#Serachajax").val() == 0) {
+                    $("#AjaxAppend").empty();
+                    $("#AjaxHide").show();
+                }
+            }
+        })
+    })
+</script>

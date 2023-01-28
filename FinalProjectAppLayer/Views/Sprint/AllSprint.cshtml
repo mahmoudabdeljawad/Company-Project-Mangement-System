@@ -1,0 +1,124 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Sprint>
+
+
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Sprint </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Sprint Created</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                              
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Start Date
+                                </th>
+                                <th>
+                                    End Date
+                                </th>
+                                <th>
+                                    Project 
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="AjaxResult"></tbody>
+                        <tbody id="BodyToHide">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                 
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SprintName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sprintDescrption)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StartDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EndDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                                    </td>
+                                    <td>
+                                        @if (item.StateId == 1)
+                                        {
+                                            <span class="badge badge-success">Completed</span>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <span class="badge badge-warning">Pending</span>
+
+                                        }
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/Sprint/SprintSearch',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: { Search: search },
+            success: function (data) {
+                $("#BodyToHide").hide();
+                $("#AjaxResult").empty()
+
+                $.each(data, function (index, val) {
+
+                    $("#AjaxResult").append('<tr><td>' + val.sprintId + '</td><td>' + val.sprintName + '</td><td>' + val.sprintDescrption
+                        + '</td><td>' + val.startDate + '</td><td>' + val.endDate + '</td><td>' + val.projectName + '</td>'
+                        + '<td>' + ((val.stateId) == 1 ? '<span class="badge badge-success">Completed</span>' : '<span class="badge badge-warning">Pending</span>') +'</td>'
+                        +
+                        '</tr>');
+                })
+                if ($("#Serachajax").val() == 0)
+                {
+                    $("#AjaxResult").empty()
+                    $("#BodyToHide").show();
+                }
+            },     
+    })
+
+    })
+</script>

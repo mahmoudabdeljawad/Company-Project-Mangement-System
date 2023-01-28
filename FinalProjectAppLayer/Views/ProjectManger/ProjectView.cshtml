@@ -1,0 +1,278 @@
+﻿@using BusniessLayer.Entity
+@model Project
+    <!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Project View</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">Project </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<!-- [ Main Content ] start -->
+<div id="RemoveModel"></div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+
+            <div class="card-header">
+                <h5>Project Description</h5>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                    officia deserunt mollit anim id est laborum."
+                </p>
+
+
+                <!-- [ sample-page ] end -->
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card bg-light">
+            <div class="card-header bg-primary text-white">Project : @Model.ProjectName</div>
+            <div class="card-body">
+                <h5 class="card-title">Progress</h5>
+                <p class="card-text">The progress bar is based on sprint states</p>
+                <div class="progress mb-4 ">
+                    @{
+                        int SprintCompleted = 0;
+                        //var SprintCompleted = 0;
+                        //var SprintCompleted = 0;
+                        int SprintCount = 0;
+                        string SprintProgress = "10%";
+                        float sumationofprogress = 0;
+                        foreach (var item in (List<Sprint>)Model.Sprints)
+                        {
+                            if (item.StateId == 1)
+                            {
+                                SprintCompleted++;
+                            }
+                            SprintCount++;
+
+                        }
+                        if (SprintCount != 0 && SprintCompleted != 0)
+                        {
+                            sumationofprogress = (((float)SprintCompleted / (float)SprintCount) * 100);
+                            SprintProgress = String.Format("{0:0.##\\%}", sumationofprogress);
+                        }
+
+
+                    }
+                    @if (SprintProgress == "100%")
+                    {
+                        <div class="progress-bar bg-success" role="progressbar" style="width: @SprintProgress"></div>
+                    }
+                    else
+                    {
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: @SprintProgress"></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-12">
+        <div class="card table-card review-card">
+
+            <div class="card-header borderless ">
+                <h5>Project Comments</h5>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @{
+                if (((List<Comment>)ViewBag.comment).Count() == 0)
+                {
+                    <p class="text-center m-t-15 m-b-15 text-muted">
+                        No Comment add yet....!
+                    </p>
+                }
+                else
+                    foreach (var item in (List<Comment>)ViewBag.comment)
+                    {
+                        <div class="card-body">
+                            <div class="review-block">
+                                <div class="row">
+                                    <div class="col-sm-auto p-r-0">
+                                        <img src="~/@item.Member.ImageUrl" alt="user image" class="img-radius profile-img cust-img m-b-15">
+                                    </div>
+                                    <div class="col">
+
+                                        <h6 class="m-b-15">@item.Member.FitstName @item.Member.LastName  <span class="float-right f-13 text-muted"> @item.dateTime.ToString("dddd / MMMM")</span></h6>
+
+                                        <p class="m-t-15 m-b-15 text-muted">
+                                            @item.CommentText
+                                        </p>
+                                        <a href="#!" class="m-r-30 text-muted"><i class="feather icon-thumbs-up m-r-15"></i>Helpful?</a>
+                                        <a href="#!"><i class="feather icon-heart-on text-c-red m-r-15"></i></a>
+                                        <a href="#!"><i class="feather icon-edit text-muted"></i></a>
+
+                                        @if (item.MemberId == ViewBag.Id)
+                                        {
+                                            <a href="#!" id="DeleteBtn" onclick="Deletefunction('@item.Commentid')"><i class="feather icon-trash text-danger"></i></a>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+            }
+
+
+            <div class="review-block">
+                <div class="row">
+                    <div class="col-sm-12 p-r-0 ">
+                        <form action="/ProjectManger/Commentinsert" hidden id="CommentForm">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Comment</label>
+                                <textarea class="form-control" name="CommentText" id="CommentText" style="background-color: #f2f4f7;"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                            <input type="hidden" asp-for="ProjectId" />
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success " value="Sent" id="SentCommet">
+                                <input type="button" class="btn btn-outline-danger " id="Cancel" value="Cancel">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success " style="margin-top:-30px" id="CommintBox">Add Comment</button>
+
+    </div>
+</div>
+<div id="DeleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLiveLabel">Comment Remove</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">Are you sure you want to remove this comment....!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="removesubmit" class="btn  btn-danger">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/popup.js"></script>
+@if (TempData["AddComment"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            CommentSuccsess("Commint")
+
+        })
+    </script>
+}
+@if (TempData["RemoveComment"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            RemoveCommentt("Commint")
+
+        })
+    </script>
+}
+<!-- [ Main Content ] end -->
+<script>
+    $("#Cancel").on('click', function () {
+        $("#CommentForm").prop('hidden', true);
+        $("#CommintBox").show();
+        $(".text-danger").empty();
+    })
+    $("#CommintBox").on('click', function () {
+        $(this).hide();
+        $("#CommentForm").prop('hidden', false);
+        if ($("#CommentText").val() == 0) {
+            $("#SentCommet").prop('type', 'button')
+
+        }
+    });
+    $("#SentCommet").click(function () {
+
+        if ($("#CommentText").val() == 0) {
+            $('.text-danger').html('Comment Box is requierd')
+        }
+    })
+    $("#CommentText").on('keyup', function () {
+        $("#SentCommet").prop('type', 'submit')
+        if ($('#CommentText').val() == 0) {
+            $('.text-danger').html('Comment Box is requierd');
+            $("#SentCommet").prop('type', 'button')
+        } else {
+            $('.text-danger').empty();
+            $("#SentCommet").prop('type', 'submit')
+        }
+    })
+
+    function Deletefunction(CommentId) {
+        $("#RemoveModel").html(function () {
+            $("#DeleteModal").modal('show')
+            $('#removesubmit').on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: '/ProjectManger/DeleteComent',
+                    data: { CommentId },
+                    success: function () {
+                        debugger;
+                        window.location.reload();
+
+                    }
+                })
+
+            })
+        });
+
+    }
+
+
+
+</script>
+@*<form hidden id="CommentForm" class="justify-content-center">
+        <label for="Comment">Comment</label><br />
+        <textarea id="Comment" style="width:100%"></textarea>
+    </form>*@

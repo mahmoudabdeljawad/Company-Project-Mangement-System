@@ -1,0 +1,505 @@
+﻿@using BusniessLayer.DTO
+@using BusniessLayer.Entity
+<!-- [ Header ] end -->
+<!-- [ Main Content ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Dashboard </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<!-- [ Main Content ] start -->
+<div class="row">
+    <div class="col-lg-7 col-md-12">
+        <!-- support-section start -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card support-bar overflow-hidden">
+                    <div class="card-body pb-0">
+                        <h2 class="m-0">@ViewBag.AllMember</h2>
+                        <span class="text-c-blue"> Member</span>
+                        <p class="mb-3 mt-3">Total number of Member of the system.</p>
+                    </div>
+
+                    <div class="card-footer text-white" style="background-color: #a44646;">
+                        <div class="row text-center">
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="col-sm-6">
+                <div class="card support-bar overflow-hidden">
+                    <div class="card-body pb-0">
+                        <h2 class="m-0">@ViewBag.AllProjectManger </h2>
+                        <span class="text-c-blue">Project Manger</span>
+                        <p class="mb-3 mt-3">Total number of Project Manger.</p>
+                    </div>
+
+                    <div class="card-footer text-white" style="background-color: #3f7d3f;">
+                        <div class="row text-center">
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card support-bar overflow-hidden">
+                    <div class="card-body pb-0">
+                        <h2 class="m-0">@ViewBag.AllTeamLeader</h2>
+                        <span class="text-c-green">Team Leader</span>
+                        <p class="mb-3 mt-3">Total number of Team Leader.</p>
+                    </div>
+                    <div class="card-footer  text-white" style=" background-color: #d98d00">
+                        <div class="row text-center">
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <div class="col-sm-6">
+                <div class="card support-bar overflow-hidden">
+                    <div class="card-body pb-0">
+                        <h2 class="m-0">@ViewBag.AllTeamMember</h2>
+                        <span class="text-c-green">Team Member</span>
+                        <p class="mb-3 mt-3">Total number of Team Member.</p>
+                    </div>
+                    <div class="card-footer bg-c-yellow text-white" style="background-color:#1562ac">
+                        <div class="row text-center">
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                            <div class="col">
+                                <h4 class="m-0 text-white"></h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- support-section end -->
+    </div>
+    <div class="col-lg-5 col-md-12">
+        <!-- page statustic card start -->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="text-c-blue">@ViewBag.AllWork </h4>
+                                <h6 class="text-muted m-b-0">Total Work</h6>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="feather icon-calendar f-28"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-c-blue" style="background-color: #1562ac;">
+                        <div class="row align-items-center">
+                            <div class="col-9">
+                                <p class="text-white m-b-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="text-c-yellow">@ViewBag.AllWorkPending </h4>
+                                <h6 class="text-muted m-b-0">Pending Work</h6>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="feather icon-bar-chart-2 f-28"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-c-yellow" style="background-color: #d98d00;">
+                        <div class="row align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="text-c-green">@ViewBag.AllWorkApprove </h4>
+                                <h6 class="text-muted m-b-0">Approve Work</h6>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="feather icon-file-text f-28"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-c-green" style="background-color: #3f7d3f;">
+                        <div class="row align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h4 class="text-c-red">@ViewBag.AllWorkReject </h4>
+                                <h6 class="text-muted m-b-0">Rejected</h6>
+                            </div>
+                            <div class="col-4 text-right">
+                                <i class="feather icon-thumbs-down f-28"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-c-red" style="background-color: #a44646;">
+                        <div class="row align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page statustic card end -->
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h3>@ViewBag.AllProject</h3>
+                        <h6 class="text-muted m-b-0">Total Project</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h3>@ViewBag.AllSprint</h3>
+                        <h6 class="text-muted m-b-0">Total Sprint</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h3>@ViewBag.AllDuties</h3>
+                        <h6 class="text-muted m-b-0">Total Duties</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h3>@ViewBag.AllWorkAttachment</h3>
+                        <h6 class="text-muted m-b-0">Work Attachment</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-7 col-md-12 ">
+        <div class="card table-card">
+            <div class="card-header">
+                <h5>Projects</h5>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0" style=" height: 388px; overflow-y: scroll">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Manger
+                                </th>
+                                <th>Project Name</th>
+                                <th>Dead Line</th>
+                                <th>State</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                                foreach (var item in (List<ProjectMangerStateDto>)ViewBag.ProjectMangerState)
+                                {
+                                    <tr>
+                                        <td>
+                                            @*<div class="chk-option">
+                                                    <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-label"></span>
+                                                    </label>
+                                                </div>*@
+                                            <div class="d-inline-block align-middle">
+                                                <img src="~/@item.ImageUrl" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                                                <div class="d-inline-block">
+                                                    <h6>@item.MangerName @item.MangerLastName </h6>
+                                                    @*<p class="text-muted m-b-0">Graphics Designer</p>*@
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @item.ProjectName
+                                        </td>
+
+                                        <td>@item.DeadLine.ToString("dd/MMM/yy")</td>
+                                        @if (item.StateId == 1)
+                                        {
+                                            <td class="text-left"><label class="badge badge-light-success">Completed</label></td>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <td class="text-left"><label class="badge badge-light-warning">Pending</label></td>
+
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-5 col-md-12 ">
+        <div class="card latest-update-card">
+            <div class="card-header">
+                <h5>Latest Updates</h5>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body" style=" height: 388px; overflow-y: scroll">
+                <div class="latest-update-box">
+                    @foreach (var item in (List<LastUpdateDto>)ViewBag.LastUpdate)
+                    {
+                        if (item.StateId == 6)
+                        {
+                            <div class="row p-t-30 p-b-30">
+                                <div class="col-auto text-right update-meta" style="padding-right: 20px;">
+                                    <p class="text-muted m-b-0 d-inline-flex" style="padding-right:20px">@item.UpdateDate.ToString("dd/M  hh:mm tt") </p>
+                                    <div class=" text-danger " role="status" style="display: inline;">
+                                        <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6>@item.FieldName : @item.Name </h6>
+                                    </a>
+                                    <p class="text-muted m-b-0">@item.FieldName @item.Name Has been Removed</p>
+                                </div>
+                            </div>
+                        }
+                        else if (item.StateId == 7)
+                        {
+                            <div class="row p-t-30 p-b-30">
+                                <div class="col-auto text-right update-meta" style="padding-right: 20px;">
+                                    <p class="text-muted m-b-0 d-inline-flex" style="padding-right:20px">@item.UpdateDate.ToString("dd/M  hh:mm tt") </p>
+                                    <div class=" text-success " role="status" style="display: inline;">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6>@item.FieldName : @item.Name </h6>
+                                    </a>
+                                    <p class="text-muted m-b-0">@item.FieldName @item.Name Has been Add</p>
+                                </div>
+                            </div>
+                        }
+                        else if (item.StateId == 8)
+                        {
+                            <div class="row p-t-30 p-b-30">
+                                <div class="col-auto text-right update-meta" style="padding-right: 20px;">
+                                    <p class="text-muted m-b-0 d-inline-flex" style="padding-right:20px">@item.UpdateDate.ToString("dd/M  hh:mm tt") </p>
+                                    <div class=" text-success " role="status" style="display: inline;">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6>@item.FieldName : @item.Name </h6>
+                                    </a>
+                                    <p class="text-muted m-b-0">@item.FieldName @item.Name Has been Update</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row p-t-30 p-b-30">
+                                <div class="col-auto text-right update-meta">
+                                    <p class="text-muted m-b-0 d-inline-flex">@item.UpdateDate.ToString("dd/M  hh:mm tt") </p>
+                                    @if (item.StateId == 1)
+                                    {
+                                        <div class="spinner-grow text-success" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+
+                                    }
+                                    else if (item.StateId == 2)
+                                    {
+                                        <div class="spinner-grow text-warning" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    }
+                                    else if (item.StateId == 3)
+                                    {
+                                        <div class="spinner-grow text-warning" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    }
+                                    else if (item.StateId == 4)
+                                    {
+                                        <div class="spinner-grow text-danger" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col">
+                                    <a href="#!">
+                                        <h6>@item.FieldName : @item.Name </h6>
+                                    </a>
+                                    <p class="text-muted m-b-0">@item.FieldName @item.Name State has been update to @item.StateName</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row p-b-30">
+            <div class="col-auto text-right update-meta">
+                <p class="text-muted m-b-0 d-inline-flex">4 hrs ago</p>
+                <i class="feather icon-briefcase bg-c-red update-icon"></i>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <h6>+ 5 New Products were added!</h6>
+                </a>
+                <p class="text-muted m-b-0">Congratulations!</p>
+            </div>
+        </div>
+        <div class="row p-b-0">
+            <div class="col-auto text-right update-meta">
+                <p class="text-muted m-b-0 d-inline-flex">2 day ago</p>
+                <i class="feather icon-facebook bg-facebook update-icon"></i>
+            </div>
+            <div class="col">
+                <a href="#!">
+                    <h6>+1 Friend Requests</h6>
+                </a>
+                <p class="text-muted m-b-10">This is great, keep it up!</p>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tr>
+                            <td class="b-none">
+                                <a href="#!" class="align-middle">
+                                    <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                                    <div class="d-inline-block">
+                                        <h6>Jeny William</h6>
+                                        <p class="text-muted m-b-0">Graphic Designer</p>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>*@
+    @*</div>*@
+    @*</div>*@
+
+    @*<div class="text-center">
+            <a href="#!" class="b-b-primary text-primary">View all Projects</a>
+        </div>*@
+
+    <!-- Latest Customers end -->
+</div>
+<!-- [ Main Content ] end -->

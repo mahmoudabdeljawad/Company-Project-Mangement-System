@@ -1,0 +1,69 @@
+﻿@using BusniessLayer.Entity
+@model BusniessLayer.Entity.Duty
+<!-- Modal -->
+<div class="modal fade" id="ModalToShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Duty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+                <form action="/Teamleader/EditDutyDone/" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input asp-for="DutyId" class="form-control" hidden />
+
+                    <div class="form-group">
+                        <label asp-for="DutyName" class="control-label"></label>
+                        <input asp-for="DutyName" class="form-control" />
+                        <span asp-validation-for="DutyName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DutyDescrption" class="control-label"></label>
+                        <input asp-for="DutyDescrption" class="form-control" />
+                        <span asp-validation-for="DutyDescrption" class="text-danger"></span>
+                    </div>
+
+                    <input asp-for="SprintId" hidden class="form-control" />
+                    <div class="form-group">
+                        <label class="control-label">TeamMeber</label><br />
+                        <select class="Mselect form-group" asp-for="TeamMemberId">
+                            @foreach (var item in (List<TeamMember>)ViewBag.AllDutiesMember)
+                            {
+                                if (item.Id == Model.TeamMemberId)
+                                {
+                                    <option value="@item.Id " class="form-control" selected>@item.UserName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.UserName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <input asp-for="StateId" class="form-control" hidden />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('.Mselect').select2({
+            dropdownParent: $('#ModalToShow'),
+
+            placeholder: "Member",
+        });
+    })
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

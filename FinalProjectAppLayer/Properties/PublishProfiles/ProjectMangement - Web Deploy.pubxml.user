@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZRmyvWK6u0CWRROLvXEbPgAAAAACAAAAAAAQZgAAAAEAACAAAAAxCTvorokFoZ9WJsWkbi7it/BIxz3eHCihSJGdKUelSAAAAAAOgAAAAAIAACAAAAAo5tYxazlvDHR0oasulCF1OJK4E3TAIKCso2wSIs2ZfoAAAACOweVDSozutwjyJYSM0xT75j1PZt9RzyC2KWih8Va2x76gM51wCRLtTfDtZN3fiOlbJYBp7zX6Dsk1fMXS3qfS2cwHgfE8cc0s2dSAId7diwzKjvxqqESuQu2fGlUwLfMt6FgtGMFFZl9XtqpE9tzUqz9uQj/JGEqZ4Pe/Ld3MwEAAAAAi18LYddvAzsLFHHlnQKv/jKnv/360XFXj+YFIoHFkMwBXwNlfW6jp0txP0TR+uLZmWpO7h/a/AjENvm90/7M8</EncryptedPassword>
+    <History>True|2022-09-12T08:04:54.1273800Z;True|2022-09-12T11:03:39.3345620+03:00;True|2022-09-12T11:01:58.8009560+03:00;True|2022-09-12T10:52:46.1812984+03:00;True|2022-09-11T21:26:02.9783887+03:00;True|2022-09-11T21:21:03.9888663+03:00;True|2022-09-11T14:20:13.1125716+03:00;True|2022-09-11T13:53:45.6313881+03:00;True|2022-09-11T13:25:49.4890473+03:00;True|2022-09-11T13:12:26.8854132+03:00;True|2022-09-10T16:26:18.3944285+03:00;True|2022-09-10T15:29:44.4663665+03:00;True|2022-09-10T15:15:12.5782900+03:00;True|2022-09-10T14:57:32.3126841+03:00;True|2022-09-10T14:48:19.7850414+03:00;True|2022-09-10T14:25:10.0384262+03:00;True|2022-09-10T14:10:25.0975858+03:00;True|2022-09-10T13:22:21.7674944+03:00;True|2022-09-10T13:17:57.9875080+03:00;True|2022-09-10T12:59:03.1781764+03:00;True|2022-09-10T12:56:30.3911119+03:00;True|2022-09-10T12:48:29.2075846+03:00;True|2022-09-10T12:43:47.0389944+03:00;True|2022-09-10T12:40:17.3804229+03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:projectmangement.database.windows.net,1433%3bInitial Catalog=FinalProject%3bUser Id=mahmoud%40projectmangement%3bPassword=Messi_121</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

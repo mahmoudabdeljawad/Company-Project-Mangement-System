@@ -1,0 +1,105 @@
+﻿@using BusniessLayer.Entity
+@using BusniessLayer.DTO
+@model CreateProjectDto
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a asp-action="AllProjectCreated">AllProject</a></li>
+                        <li class="breadcrumb-item"><a href="#">EditProject</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        <a asp-action="InsertNewProject" class="btn btn-primary">Create New Project</a>
+    </p>
+    <div class="row">
+        <!-- [ horizontal-layout ] start -->
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="ProjectEditDone">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input asp-for="ProjectId" class="form-control" hidden />
+
+                                <div class="form-group">
+                                    <label asp-for="ProjectName" class="control-label"></label>
+                                    <input asp-for="ProjectName" class="form-control" />
+                                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Descrption" class="control-label"></label>
+                                    <input asp-for="Descrption" class="form-control" name="Descrption" />
+                                    <span asp-validation-for="Descrption" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Deadline" class="control-label"></label>
+                                    <input asp-for="Deadline" class="form-control" />
+                                    <span asp-validation-for="Deadline" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Teamleader</label>
+                                    <select class="form-control js-example-basic-multiple" asp-for="TeamLeaderId">
+                                        @{foreach (var item in ViewBag.TeamLeader)
+                                            {
+                                                foreach (var m in (List<ProjectMembers>)ViewBag.MemberForProject)
+                                                {
+                                                    if (m.MemberId == item.Id)
+                                                    {
+                                                        <option value="@item.Id" selected>@item.UserName</option>
+                                                        break;
+                                                    }
+                                                    <option value="@item.Id">@item.UserName</option>
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="TeamLeaderId" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">TeamMember</label><br>
+                                    <select class="form-control js-example-basic-multiple" multiple asp-for="ProjectMemberId">
+                                        @{ foreach (var item in (List<TeamMember>)ViewBag.TeamMember)
+                                            {
+                                                var query = ((List<ProjectMembers>)ViewBag.MemberForProject).SingleOrDefault(x => x.MemberId == item.Id);
+                                                if (query != null)
+                                                {
+                                                    <option value="@item.Id" selected>@item.UserName</option>
+                                                }
+                                                else if (query == null)
+                                                {
+                                                    <option value="@item.Id">@item.UserName</option>
+                                                }
+                                            }
+                                        }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="ProjectMemberId" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    <script src="~/js/site.js"></script>

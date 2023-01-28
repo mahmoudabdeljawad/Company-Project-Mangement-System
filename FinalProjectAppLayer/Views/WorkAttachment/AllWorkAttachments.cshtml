@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BusniessLayer.Entity.WorkAttachment>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Work Attachment </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Work Attachment Created</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive ">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FileName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ContentType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.File)
+                                </th>
+                                <th>
+                                    Work 
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="AjaxResult"></tbody>
+                        <tbody id="BodyToHide">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WorkAttachmentId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FileName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ContentType)
+                                    </td>
+                                    <td>
+                                        <a href="/WorkAttachment/AttachmentView?Id=@item.WorkAttachmentId">@item.FileName</a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Works.WorkName)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/WorkAttachment/AttachmentSearch',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: { Search: search },
+            success: function (data) {
+                $("#BodyToHide").hide();
+                $("#AjaxResult").empty()
+
+                $.each(data, function (index, val) {
+
+                    $("#AjaxResult").append('<tr><td>' + val.workAttachmentId + '</td><td>' + val.fileName + '</td><td>' + val.contentType
+                        + '</td><td>' + '<a href="/WorkAttachment/AttachmentView?Id=' + val.workAttachmentId
+                        + '">' + val.fileName + '</a>' + '</td><td>' + val.workName + '</td></tr>')
+                })
+                if ($("#Serachajax").val() == 0)
+                {
+                    $("#AjaxResult").empty()
+                    $("#BodyToHide").show();
+                }
+            },
+    })
+
+    })
+</script>

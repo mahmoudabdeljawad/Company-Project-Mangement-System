@@ -1,0 +1,13 @@
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\bin\Debug\netcoreapp3.1\BusniessLayer.deps.json
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\bin\Debug\netcoreapp3.1\BusniessLayer.runtimeconfig.json
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\bin\Debug\netcoreapp3.1\BusniessLayer.runtimeconfig.dev.json
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\bin\Debug\netcoreapp3.1\BusniessLayer.dll
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\bin\Debug\netcoreapp3.1\BusniessLayer.pdb
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.AssemblyInfoInputs.cache
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.AssemblyInfo.cs
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.csproj.CoreCompileInputs.cache
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.dll
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.pdb
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.genruntimeconfig.cache
+C:\Users\MAHMO\source\repos\FinalProject\BusniessLayer\obj\Debug\netcoreapp3.1\BusniessLayer.csproj.AssemblyReference.cache

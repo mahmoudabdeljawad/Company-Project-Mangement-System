@@ -1,0 +1,162 @@
+﻿@using BusniessLayer.Entity
+@model ProjectMembers
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllProjectCreated">AllProject</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <!-- [ horizontal-layout ] start -->
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Descrption
+                                    </th>
+                                    <th>
+                                        Deadline
+                                    </th>
+                                    <th>
+                                        Member
+                                    </th>
+                                    <th>
+                                        State
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in (List<ProjectMembers>)ViewBag.ProjectForTeamLeaedr)
+                                {
+                                    <tr id="@item.ProjectId">
+                                        <td>
+                                            @item.Project.ProjectName
+                                        </td>
+                                        <td>
+                                            @item.Project.ProjectDescrption
+                                        </td>
+                                        <td>
+                                            @item.Project.DeadLine
+                                        </td>
+                                        <td style="width:30%">
+                                            <select class="js-example-placeholder-single form-control" style="width:70%">
+                                                <option></option>
+                                                @{ foreach (var x in ViewBag.ProjectMember)
+
+                                                        if (item.Project.ProjectId == x.ProjectId)
+                                                        {
+                                                            if (x.RoleName == "Teamleader")
+                                                            {
+                                                            }
+                                                            else if (x.RoleName == "ProjectManger")
+                                                            {
+                                                                continue;
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="x.Id" class="form-group">@x.UserName</option>
+                                                            }
+                                                        }
+                                                }
+                                            </select>
+                                        </td>
+                                        @{
+
+                                            if (item.Project.StateId == 1)
+                                            {
+                                                <td>
+                                                    <span class="badge badge-success">Completed</span>
+                                                </td>
+                                            }
+                                            else if (item.Project.StateId == 3)
+                                            {
+                                                <td>
+                                                    <span class="badge badge-warning">Pending</span>
+                                                </td>
+                                            }
+                                            else if (item.Project.StateId == 4)
+                                            {
+                                                <td>
+                                                    <span class="badge badge-danger">Rejected</span>
+                                                </td>
+                                            }
+
+                                        }
+
+                                        <td>
+                                            <a href="/ProjectManger/ProjectView?ProjectId=@item.ProjectId" class="btn btn-primary">View</a>
+                                            <a href="/TeamLeader/SprintList?ProjectId=@item.ProjectId" class="btn btn-outline-info">Sprint</a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr id="footerz">
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $('#Serachajax').on('keyup', function () {
+        var search = $(this).val();
+        $.ajax({
+            method: 'GET',
+            url: '/ProjectManger/SearchProject',
+            data: { Search: search },
+            success: function (data) {
+                $('tbody tr').each(function () {
+                    $('#footerz').empty();
+                    $(this).prop('hidden', true)
+                })
+
+                $.each(data, function (ind, vls) {
+                    $('tbody tr').each(function () {
+                        if (vls.projectId == $(this).attr('id')) {
+                            $('#' + vls.projectId).prop('hidden', false)
+                        }
+                    })
+                })
+                if (data.length == 0) {
+                    debugger
+                    $('#footerz').empty();
+                    $('#footerz').append('<div style="color:red" role="alert">No result are found</div >')
+                }
+
+                if ($('#Serachajax').val() == 0) {
+                    $('#footerz').empty();
+                    $('tbody tr').each(function () {
+                        $(this).prop('hidden', false)
+                    })
+
+                }
+            }
+
+        })
+
+    })
+</script>

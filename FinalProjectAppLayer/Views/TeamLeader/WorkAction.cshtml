@@ -1,0 +1,125 @@
+﻿@using BusniessLayer.Entity
+@model Work
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects">All Project</a></li>
+                        <li class="breadcrumb-item"><a asp-action="SprintList">Prject Sprints</a></li>
+                        <li class="breadcrumb-item"><a asp-action="SprintList">Project Duties</a></li>
+                        <li class="breadcrumb-item"><a asp-action="WorkView">All Work</a></li>
+                        <li class="breadcrumb-item"><a href="#">Work Action</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-8 col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    @{ foreach (var item in (List<Work>)ViewBag.WorkAtction)
+                        {
+                           
+                                <div class="form-group">
+                                    <label>Work Name :</label>
+                                    <input class="form-control" value="@item.WorkName" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label>Work Descrption :</label>
+                                    <textarea class="form-control" disabled>@item.WorkDescrption</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Work Attachment :</label><br />
+                                    <a href="/TeamLeader/WorkAttachmentView?WorkId=@item.WorkId" class="btn-outline-primary text-decoration-none btn">@item.WorkAttachments.LastOrDefault().FileName</a>
+                                </div>
+
+
+                                @*<div>
+                                        <label>Recected Note :</label>
+                                        <input class="form-control" value="@item.WorkName" />
+                                    </div>*@
+                                <div class="form-group">
+                                    <button class="btn btn-success" id="Approve">Approve</button>
+                                    <script>
+            $("#Approve").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("WorkAprove")',
+                    data: {
+                        WorkId: "@item.WorkId",
+                        DutyId: "@item.DutyId",
+                        WorkAttachmentId: "@item.WorkAttachments.LastOrDefault().WorkAttachmentId"
+                    },
+                    success: function () {
+                        window.location.href = '@Url.Action("WorkView",new {DutyId=item.DutyId })'
+                    }
+                })
+            });
+                                    </script>
+                                    <a @*href="/Teamleader/WorkAprove?"*@ class="btn btn-danger" style="margin-left:100px;color:white" id="Recject">Reject</a>
+                                </div>
+                                <form id="Rejject">
+                                    <div class="form-group" id="RecjectNote" style="display:none">
+                                        <label>Rejected Note</label>
+                                        <textarea class="form-control" style="margin-bottom:10px" id="rejectNote" name="RejectNote"></textarea>
+                                        <a class="btn btn-danger" @*href="/Teamleader/WorkReject?WorkId=@item.WorkId&DutyId=@item.DutyId"*@ name="rejected" id="rejected" style="color: white;">Reject</a>
+                                        <input hidden name="WorkId" value="@item.WorkId" id="w" />
+                                        <input hidden name="DutyId" value="@item.DutyId" id="d" />
+                                        <input hidden name="WorkAttachmentId" value="@item.WorkAttachments.LastOrDefault().WorkAttachmentId" id="a"  />
+                                        <button class="btn btn-outline-dark" style="margin-left:100px;" id="Cancel">Cancel</button>
+                                    </div>
+                                </form>
+                            
+
+
+                        }}
+                    </div></div></div></div>
+                    <script>
+                        var reject = document.getElementById("Recject");
+                        var approv = document.getElementById("Approve");
+                        var reason = document.getElementById("RecjectNote");
+                        var cancel = document.getElementById("Cancel");
+                        var rejected = document.getElementById("rejected");
+
+                        reject.onclick = function () {
+                            reject.style.display = "none"
+                            approv.style.display = "none"
+                            reason.style.display = "";
+                        }
+                        cancel.onclick = function () {
+                            reason.style.display = "none";
+                            approv.style.display = "";
+                            reject.style.display = "";
+
+                        }
+
+                    
+                    </script>
+                    <script type="text/javascript">
+                        var rejected = document.getElementById("rejected");
+
+                        rejected.onclick = function () {
+                            var data = $("#Rejject").serialize();
+                            $.ajax({
+                                type: 'POST',
+                                url: '/TeamLeader/WorkReject',
+                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+                                data: {
+                                    RejectNote: $("#rejectNote").val(),
+                                    WorkId: $("#w").val(),
+                                    DutyId: $("#d").val(),
+                                    WorkAttachmentId: $("#a").val()
+                                }, success: function (response) {
+                                    window.location.href = response.redirectToUrl;
+                                }
+
+                            })
+                        }
+
+                    </script>

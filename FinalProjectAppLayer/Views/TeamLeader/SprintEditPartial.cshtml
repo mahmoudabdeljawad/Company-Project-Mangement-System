@@ -1,0 +1,48 @@
+﻿@model BusniessLayer.Entity.Sprint
+<div id="EditModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Sprint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="SprintEditDone">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input asp-for="SprintId" class="form-control" hidden />
+
+                    <div class="form-group">
+                        <label asp-for="SprintName" class="control-label"> Name</label>
+                        <input asp-for="SprintName" class="form-control" />
+                        <span asp-validation-for="SprintName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sprintDescrption" class="control-label">Description</label>
+                        <input asp-for="sprintDescrption" class="form-control" />
+                        <span asp-validation-for="sprintDescrption" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartDate" class="control-label">Start Date</label>
+                        <input asp-for="StartDate" class="form-control" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndDate" class="control-label">End Date</label>
+                        <input asp-for="EndDate" class="form-control" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+
+                    <input asp-for="ProjectId" hidden />
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn  btn-success">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

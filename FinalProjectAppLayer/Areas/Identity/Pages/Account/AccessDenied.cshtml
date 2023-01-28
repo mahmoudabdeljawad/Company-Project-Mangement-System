@@ -1,0 +1,11 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">You do not have access to this resource.</p>
+    <a href="/Login/Index" class="btn btn-danger text-center" style="margin-left: 13px;"> Go Back To you Home Page</a>
+</header>

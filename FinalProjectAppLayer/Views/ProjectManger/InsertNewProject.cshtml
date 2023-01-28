@@ -1,0 +1,109 @@
+﻿@using BusniessLayer.DTO
+@model CreateProjectDto
+<br>
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="page-header-title">
+                    </div>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a asp-action="AllProjectCreated">AllProject</a></li>
+                        <li class="breadcrumb-item"><a href="#">New Project</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row">
+        <!-- [ horizontal-layout ] start -->
+        <div class="col-sm-6">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            
+                            <form asp-action="InsertDone">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="ProjectName" class="control-label">Project Name</label>
+                                    <input asp-for="ProjectName" class="form-control" />
+                                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Descrption" class="control-label"> Description</label>
+                                    <input  asp-for="Descrption" type="datetime" class="form-control" />
+                                    <span asp-validation-for="Descrption"  class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Deadline" class="control-label"></label>
+                                    <input asp-for="Deadline" class="form-control"  />
+                                    <span asp-validation-for="Deadline" class="text-danger" name="Deadline"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TeamLeaderId" class="">Teamleader</label><br>
+                                    <select class="form-control js-example-basic-multiple" asp-for="TeamLeaderId">
+                                        <option selected disabled hidden>Nothing Selected</option>
+
+                                        @{ foreach (var item in ViewBag.TeamLeader)
+                                            {
+                                                <option value="@item.Id" class="form-control">@item.UserName</option>
+                                            }
+                                        }
+
+                                    </select>
+                                    <span asp-validation-for="TeamLeaderId" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ProjectMemberId" class="control-label">Project Member</label><br>
+                                    <select class="form-control js-example-basic-multiple" multiple asp-for="ProjectMemberId">
+
+                                        @{ foreach (var item in ViewBag.TeamMember)
+                                            {
+                                                <option value="@item.Id">@item.UserName</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="ProjectMemberId" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </div>
+<script>
+
+    $('input[id=Deadline]').change(function () {
+
+        var userinputdate = $(this).val();
+        userinputdate = new Date(userinputdate);
+        var CurrentDate = new Date();
+      
+        if (userinputdate < CurrentDate) {
+            $('span[name=Deadline]').empty();
+            $('span[name=Deadline]').append('Date Must be higher than today')
+            $('input[ type="submit"]').prop('type','button')
+        } else {
+            $('span[name=Deadline]').empty();
+            $('input[ type="button"]').prop('type', 'submit')
+            debugger;
+
+        }
+      
+    })
+
+</script>
+           @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+

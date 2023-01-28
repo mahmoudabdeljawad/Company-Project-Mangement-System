@@ -1,0 +1,148 @@
+﻿@using BusniessLayer.Entity
+@model TeamMember
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">All Team Member </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="AllTeamMeber"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="">All Member</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+
+
+                <p>
+                    <a asp-action="NewTeamMember" class="btn btn-info"> Create New</a>
+                </p>
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FitstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="SearchBody"></tbody>
+                        <tbody id="TbodyToHide" class="datatoshow">
+                            @foreach (var item in (List<TeamMember>)ViewBag.AllTeamMember)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.FitstName
+                                    </td>
+                                    <td>
+                                        @item.LastName
+                                    </td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+
+                                    <td>
+
+                                        <a href="/Admin/TeamMemberDelete?Id=@item.Id" class="btn btn-danger">Delete</a>
+                                        <a href="/Admin/TeamMemberEdit?Id=@item.Id" class="btn btn-info">Edit</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (TempData["success"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            SuccsesMessage("Team Member")
+
+        })
+    </script>
+}
+@if (TempData["Remove"] != null)
+{
+    <script>
+
+        $(document).ready(function () {
+            RemoveFunction("Team Member");
+        })
+    </script>
+
+}
+@if (TempData["Edit"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            EditMessage("Team Member")
+
+        })
+    </script>
+}
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/Admin/TeamMemberSearch',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: { SearchAjax: search },
+            success: function (data) {
+                $("#SearchBody").empty();
+                $("#TbodyToHide").hide();
+                $.each(data, function (index, value) {
+                    $("#SearchBody").show();
+                    $("#SearchBody").append('<tr><td>' + value.fitstName + '</td><td>'
+                        +
+                        value.lastName
+                        +
+                        '</td><td>' +
+                        value.email
+                        + '</td>' + '<td>' +
+                        '<a href="/Admin/TeamMemberDelete?Id=' + value.id + '" class="btn btn-danger" >Delete</a> &nbsp'
+                        +
+                        '<a href="/Admin/TeamMemberEdit?Id=' + value.id + '" class="btn btn-info">Edit</a>'
+                        +
+                        '</td></tr>'
+
+                    );
+                }
+                );
+                if (data == 0) {
+                    $("#SearchBody").empty();
+                    $("#SearchBody").hide();
+                }
+                if ($("#Serachajax").val() == 0) {
+                    $("#TbodyToHide").show();
+                }
+
+
+            }
+        })
+    })
+</script>

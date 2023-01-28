@@ -1,0 +1,116 @@
+﻿@using BusniessLayer.Entity
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects">All Project</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Prject Sprints</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Project Duties</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">All Work</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Work History</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table">
+                            <tr class="thead-light">
+
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Update Date
+                                </th>
+                                <th>
+                                    Note
+                                </th>
+                                <th>
+                                    Attachment
+                                </th>
+
+                                <th>
+                                    state
+                                </th>
+
+                                @{ foreach (var item in (List<WorkHistory>)ViewBag.WorkHistory)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @item.Work.WorkName
+                                        </td>
+                                        <td>
+                                            @item.UpdateTime
+                                        </td>
+                                        @{
+                                            foreach (var R in (List<Reject>)ViewBag.RejectHistory)
+                                            {
+                                                if (item.Id == R.WorkHistoryId)
+                                                {
+                                                    <td>
+                                                        @R.RejectedNote
+                                                    </td>
+                                                }
+                                                else if (item.WorkId == R.WorkId)
+                                                {
+                                                    <td>No Note</td>
+                                                }
+
+
+                                            }}
+                                        @if (((List<Reject>)ViewBag.RejectHistory).Count() == 0)
+                                        {
+                                            <td>No Note</td>
+
+                                        }
+
+                                        <td>
+                                            <a href="/TeamLeader/WorkAttachmentHistory?WorkAttachmentId=@item.WorkAttachmentId" target="_blank">@item.WorkAttachments.FileName</a>
+                                        </td>
+
+
+
+
+
+                                        @if (item.StateId == 1 || item.StateId == 2)
+                                        {
+                                            <td style="color:green">
+                                                Approved
+                                            </td>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <td style="color:orange">
+                                                Pendeing
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="color:red">
+                                                Rejected
+                                            </td>
+                                        }
+
+
+                                    </tr>
+                                }
+                                }
+
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,217 @@
+﻿@using BusniessLayer.Entity
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Menu Static</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">Home Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    var stateCompleted = 0;
+    var statePending = 0;
+    var stateRejected = 0;
+    var CountProject = 0;
+}
+@foreach (var item in (List<Project>)ViewBag.project)
+{
+    if (item.StateId == 1)
+    {
+        stateCompleted++;
+    }
+    if (item.StateId == 3)
+    {
+        statePending++;
+    }
+    if (item.StateId == 4)
+    {
+        stateRejected++;
+    }
+    CountProject++;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card support-bar overflow-hidden">
+                <div class="card-body pb-0">
+                    <h2 class="m-0">@CountProject </h2>
+                    <span class="text-c-blue">Projects</span>
+                    <p class="mb-3 mt-3">Total number of Projects requests .</p>
+                </div>
+                <div id="support-chart"></div>
+                <div class="card-footer  text-white" style="background-color:#1562ac">
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4 class="m-0 text-white">@stateCompleted</h4>
+                            <span>Completed</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@statePending</h4>
+                            <span>Pending</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@stateRejected</h4>
+                            <span>Rejected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @{
+            var SprintCompleted = 0;
+            var SprintPending = 0;
+            var SprintRejected = 0;
+            var Sprint = 0;
+        }
+        @foreach (var item in (List<Sprint>)ViewBag.sprint)
+        {
+            if (item.StateId == 1)
+            {
+                SprintCompleted++;
+            }
+            if (item.StateId == 3)
+            {
+                SprintPending++;
+            }
+            if (item.StateId == 4)
+            {
+                SprintRejected++;
+            }
+            Sprint++;
+        }
+        <!-- support-section start -->
+
+        <div class="col-sm-6">
+            <div class="card support-bar overflow-hidden">
+                <div class="card-body pb-0">
+                    <h2 class="m-0">@Sprint </h2>
+                    <span class="text-c-blue">Sprints</span>
+                    <p class="mb-3 mt-3">Total number of Sprint requests .</p>
+                </div>
+                <div id="support-chart"></div>
+                <div class="card-footer  text-white" style="background-color: #3f7d3f;">
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4 class="m-0 text-white">@SprintCompleted</h4>
+                            <span>Completed</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@SprintPending</h4>
+                            <span>Pending</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@SprintRejected</h4>
+                            <span>Rejected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @{
+            var DutyCompleted = 0;
+            var DutyPending = 0;
+            var DutyRejected = 0;
+            var Duty = 0;
+        }
+        @foreach (var item in (List<Duty>)ViewBag.duties)
+        {
+            if (item.StateId == 1)
+            {
+                DutyCompleted++;
+            }
+            if (item.StateId == 3)
+            {
+                DutyPending++;
+            }
+            if (item.StateId == 4)
+            {
+                DutyRejected++;
+            }
+            Duty++;
+        }
+        <div class="col-sm-6">
+            <div class="card support-bar overflow-hidden">
+                <div class="card-body pb-0">
+                    <h2 class="m-0">@Duty </h2>
+                    <span class="text-c-blue">Duties</span>
+                    <p class="mb-3 mt-3">Total number of Duty requests .</p>
+                </div>
+                <div id="support-chart"></div>
+                <div class="card-footer  text-white" style="background-color: #a44646;">
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4 class="m-0 text-white">@DutyCompleted</h4>
+                            <span>Completed</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@DutyPending</h4>
+                            <span>Pending</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@DutyRejected</h4>
+                            <span>Rejected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- support-section start -->
+
+        @{
+            var WorkCompleted = 0;
+            var WorkPending = 0;
+            var WorkRejected = 0;
+            var Work = 0;
+        }
+        @foreach (var item in (List<Work>)ViewBag.works)
+        {
+            if (item.StateId == 2)
+            {
+                WorkCompleted++;
+            }
+            if (item.StateId == 3)
+            {
+                WorkPending++;
+            }
+            if (item.StateId == 4)
+            {
+                WorkRejected++;
+            }
+            Work++;
+        }
+        <div class="col-sm-6">
+            <div class="card support-bar overflow-hidden">
+                <div class="card-body pb-0">
+                    <h2 class="m-0">@Work </h2>
+                    <span class="text-c-blue">Works</span>
+                    <p class="mb-3 mt-3">Total number of Work requests .</p>
+                </div>
+                <div id="support-chart"></div>
+                <div class="card-footer  text-white" style=" background-color: #d98d00">
+                    <div class="row text-center">
+                        <div class="col">
+                            <h4 class="m-0 text-white">@WorkCompleted</h4>
+                            <span>Approved</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@WorkPending</h4>
+                            <span>Pending</span>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-0 text-white">@WorkRejected</h4>
+                            <span>Rejected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

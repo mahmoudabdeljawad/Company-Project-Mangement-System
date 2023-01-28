@@ -1,0 +1,58 @@
+﻿@using BusniessLayer.Entity
+@model Work
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Work Attachment </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Work</a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">New Work</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-group" action="/TeamMember/InsertWork" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label> Name</label>
+                        <input type="text" class="form-control" asp-for="WorkName" />
+                        <span asp-validation-for="WorkName" style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label> Description</label>
+                        <input type="text" class="form-control" asp-for="WorkDescrption" />
+                        <span asp-validation-for="WorkDescrption" style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label> Attachments</label>
+                        <input type="file" name="File" class="form-control" />
+                    </div>
+                    @*<div class="form-group">
+                            <label>Wrok atachment</label>
+                            <input type="text" class="form-control" asp-for="WorkAttachments" />
+                        </div>*@
+                    <div>
+                        <input type="text" class="form-control" name="DutyId" value="@ViewBag.DutyId" hidden />
+                        <input type="text" class="form-control" asp-for="StateId" value="3" hidden />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

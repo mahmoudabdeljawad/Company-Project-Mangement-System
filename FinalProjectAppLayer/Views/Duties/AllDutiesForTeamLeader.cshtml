@@ -1,0 +1,232 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Duty>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects">All Project</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Prject Sprints</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Project Duties</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Alert"></div>
+
+
+<div id="PlaceHolderHere"></div>
+<!-- Modal -->
+
+<div class="row">
+    <!-- [ horizontal-layout ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Descrption
+                                </th>
+                                <th>
+                                    Member
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{foreach (var item in Model)
+                                {
+
+                                        <tr id="row_@item.DutyId" class="@item.DutyId">
+                                            <td>
+                                                @item.DutyName
+                                            </td>
+                                            <td>
+                                                @item.DutyDescrption
+                                            </td>
+                                       <td>@item.TeamMember.UserName</td>
+
+                                            <td>
+                                                @if (item.Sprint.StateId == 1)
+                                                {
+                                                    <span class="badge badge-success">Completed</span>
+                                                }
+                                                else if (item.Sprint.StateId == 3)
+                                                {
+                                                    <span class="badge badge-warning">Pending</span>
+
+                                                }
+                                            </td>
+                                            @if (item.Sprint.StateId != 1)
+                                            {
+                                                <td>
+                                                    <button class="btn-danger btn" onclick="DeleteDuty('@item.DutyId')">
+                                                        Delete
+                                                    </button>
+
+                                                    <button type="button" onclick="EditModal('@item.DutyId', '@item.SprintId')" class="btn btn-success ViewToShow">
+                                                        Edit
+                                                    </button>
+                                                    <a href="/Teamleader/WorkView?DutyId=@item.DutyId" class="btn btn-outline-info">Work</a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>Done</td>
+                                            }
+                                            
+                                        </tr>
+
+                                    } }
+
+                        </tbody>
+                        <tfoot>
+                            <tr id="footerz"></tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        EditModal = function (Did, Sid) {
+            var ul = '/TeamLeader/EditDuty?DutyId=' + Did + '&&SprintId=' + Sid + '';
+
+            $("#PlaceHolderHere").load(ul, function () {
+                $("#ModalToShow").modal("show");
+            })
+        }
+    })
+</script>
+<script>
+    function DeleteDuty(Did) {
+        var ul = '/TeamLeader/PartialDeleteDuty?DutyId=' + Did;
+        $("#PlaceHolderHere").load(ul, function () {
+            $("#ModalDelete").modal("show");
+
+        })
+    }
+</script>
+<script>
+    function DeleteDutyConfirm(Did) {
+        $.ajax({
+            method: 'POST',
+            url: '/TeamLeader/DeleteDuty',
+            data: { DutyId: Did },
+            success: function () {
+                debugger;
+                $("#row_" + Did).remove();
+
+            }
+
+        })
+
+    }
+</script>
+
+<div class="modal fade" id="ModelDone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        Content
+        <div class="modal-content text-center">
+
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Be always up to date</p>
+            </div>
+
+            <div class="modal-body">
+                <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                <p>Are you sure to submite all duties?</p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <a class="btn btn-outline-warning" data-dismiss="modal">close</a>
+                <a id="DutyDone" class="btn btn-warning" data-dismiss="modal">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#DutyDone").click(function () {
+        var Sprint =@ViewBag.SprintId;
+        $.ajax({
+            method: 'GET',
+            url: '/TeamLeader/DutyDone',
+             data: { SprintId:Sprint },
+            success: function () {
+                $("#Alert").append('<div class="alert alert-success" role="alert">Duties Submited Succssesfuly</div >')
+            }
+        })
+    })
+</script>
+
+<script>
+    $('#Serachajax').on('keyup', function () {
+        var url_string = window.location;
+        var url = new URL(url_string);
+        var Sid = url.searchParams.get("SprintId");
+
+
+        var search = $(this).val();
+        $.ajax({
+            method: 'GET',
+            url: '/Duties/SearchDutiesBySprintId',
+            data: {
+                Search: search,
+                SprintId: Sid
+            },
+            success: function (data) {
+
+                $('tbody tr').each(function () {
+                    $('#footerz').empty();
+                    $(this).prop('hidden', true)
+                })
+
+                $.each(data, function (ind, vls) {
+                    $('tbody tr').each(function () {
+                        if ('row_' + vls.dutyId == $(this).attr('id')) {
+                            debugger
+                            var x = $(this).attr('id');
+                            $('#' + x).prop('hidden', false)
+                        }
+                    })
+                })
+                if (data.length == 0) {
+
+                    $('#footerz').empty();
+                    $('#footerz').append('<div style="color:red" role="alert">No result are found</div >')
+                }
+
+                if ($('#Serachajax').val() == 0) {
+                    $('#footerz').empty();
+                    $('tbody tr').each(function () {
+                        $(this).prop('hidden', false)
+                    })
+
+                }
+            }
+
+        })
+
+    })
+</script>

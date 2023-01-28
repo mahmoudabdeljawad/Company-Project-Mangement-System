@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Work>
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeaderProjects">All Project</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Prject Sprints</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Project Duties</a></li>
+                    <li class="breadcrumb-item"><a asp-action="SprintList">Work View</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Work Name
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        @{ foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.WorkName
+                                    </td>
+                                    <td>
+                                        @if (item.StateId == 2)
+                                        {
+                                            <span class="badge badge-success">Approved</span>
+                                        }
+                                        else if (item.StateId == 3)
+                                        {
+                                            <span class="badge badge-warning">Pending</span>
+
+                                        }
+                                        else if (item.StateId == 4)
+                                        {
+                                            <span class="badge badge-danger">Rejected</span>
+
+                                        }
+                                    </td>
+                                    @if (item.Duty.StateId == 3)
+                                    {
+                                        <td>
+                                            <a href="/TeamLeader/WorkAction?WorkId=@item.WorkId&DutyId=@item.DutyId" class="btn btn-success">View</a>
+                                            <a href="/TeamLeader/WorkHistory?WorkId=@item.WorkId&DutyId=@item.DutyId" class="btn btn-outline-info">History</a>
+                                        </td>
+                                    }
+                                    else if (item.Duty.StateId == 1 || item.Duty.StateId == 2)
+                                    {
+                                        <td>
+
+                                            <a href="/TeamLeader/WorkHistory?WorkId=@item.WorkId&DutyId=@item.DutyId" class="btn btn-outline-info">History</a>
+                                        </td>
+                                    }
+                                </tr>
+
+                            }
+
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

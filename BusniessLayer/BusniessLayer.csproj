@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Data\Migrations\20220813181111_b.cs" />
+		<Compile Remove="Data\Migrations\20220813181111_b.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220813182126_xczz.cs" />
+		<Compile Remove="Data\Migrations\20220813182126_xczz.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220814123131_saas.cs" />
+		<Compile Remove="Data\Migrations\20220814123131_saas.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220818153430_kkkkkx.cs" />
+		<Compile Remove="Data\Migrations\20220818153430_kkkkkx.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220818153508_kkkkkx.cs" />
+		<Compile Remove="Data\Migrations\20220818153508_kkkkkx.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220818153641_kkkkkxxa.cs" />
+		<Compile Remove="Data\Migrations\20220818153641_kkkkkxxa.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220818153936_Duty.cs" />
+		<Compile Remove="Data\Migrations\20220818153936_Duty.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819191653_fixWorkFkx.cs" />
+		<Compile Remove="Data\Migrations\20220819191653_fixWorkFkx.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819193424_dropt.cs" />
+		<Compile Remove="Data\Migrations\20220819193424_dropt.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819193600_Addwork.cs" />
+		<Compile Remove="Data\Migrations\20220819193600_Addwork.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819193809_Addworkx.cs" />
+		<Compile Remove="Data\Migrations\20220819193809_Addworkx.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819193842_Addwork.cs" />
+		<Compile Remove="Data\Migrations\20220819193842_Addwork.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819194156_kkkkka.cs" />
+		<Compile Remove="Data\Migrations\20220819194156_kkkkka.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819194638_ki.cs" />
+		<Compile Remove="Data\Migrations\20220819194638_ki.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819194740_ki.cs" />
+		<Compile Remove="Data\Migrations\20220819194740_ki.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220819212316_states.cs" />
+		<Compile Remove="Data\Migrations\20220819212316_states.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220902221807_images.cs" />
+		<Compile Remove="Data\Migrations\20220902221807_images.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220902221932_imagesx.cs" />
+		<Compile Remove="Data\Migrations\20220902221932_imagesx.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220903031844_imag.cs" />
+		<Compile Remove="Data\Migrations\20220903031844_imag.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220903032135_imag1.cs" />
+		<Compile Remove="Data\Migrations\20220903032135_imag1.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220903032736_imag11.cs" />
+		<Compile Remove="Data\Migrations\20220903032736_imag11.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220909200955_FinalProject.cs" />
+		<Compile Remove="Data\Migrations\20220909200955_FinalProject.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220909201328_new.cs" />
+		<Compile Remove="Data\Migrations\20220909201328_new.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220915171901_AddingCommentTable.cs" />
+		<Compile Remove="Data\Migrations\20220915171901_AddingCommentTable.Designer.cs" />
+		<Compile Remove="Data\Migrations\20220915172324_jjjjj.cs" />
+		<Compile Remove="Data\Migrations\20220915172324_jjjjj.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.25" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.25" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>

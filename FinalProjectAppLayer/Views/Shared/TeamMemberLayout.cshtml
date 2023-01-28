@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Member</title>
+    <link rel="icon" href="~/login/images/icons/favicon.ico" type="image/x-icon" asp-append-version="true">
+    <link rel="stylesheet" href="~/assets/css/style.css" asp-append-version="true">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" asp-append-version="true" />
+
+    <script src="/lib/jquery/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/toasty.css" rel="stylesheet" />
+</head>
+<body style=" background: #2f59b5;">
+
+    <nav class="pcoded-navbar theme-horizontal menu-light " style="margin-top:22px">
+        <div class="navbar-wrapper  ">
+            <div class="navbar-content scroll-div justify-content-md-center">
+
+                <div class="">
+                </div>
+                <ul class="nav pcoded-inner-navbar sidenav-inner ">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Member </label>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a asp-controller="TeamMember" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
+                    </li>
+
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Project </label>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="TeamMember" asp-action="AllTeamMemberProjects" class="nav-link "><span class="pcoded-micon"><i class=" feather icon-target"></i></span><span class="pcoded-mtext">Projects</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="TeamMember" asp-action="TeamMemberDutiesList" class="nav-link "><span class="pcoded-micon"><i class=" feather icon-target"></i></span><span class="pcoded-mtext">Duties</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue" style="background: #2f59b5;">
+
+        <div class="m-header" style="margin-top: -20px">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <!-- ========   change your logo hear   ============ -->
+                <img src="../assets/images/LogoA.png" alt="" class="logo" style=" width: 250px; vertical-align: middle; border-style: none; margin-top: 40px;">
+                <img src="../assets/images/logo-icon.png" alt="" class="logo-thumb">
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" style="margin-bottom:22px">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+                    <div class="search-bar">
+                        <input type="text" class="form-control border-0 shadow-none Serachajax" id="Serachajax" placeholder="Search hear">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon feather icon-bell"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right notification">
+                            <div class="noti-head">
+                                <h6 class="d-inline-block m-b-0">Notifications</h6>
+                                <div class="float-right">
+                                    <a href="#!" class="m-r-10">mark as read</a>
+                                    <a href="#!">clear all</a>
+                                </div>
+                            </div>
+                            <ul class="noti-body">
+                                <li class="n-title">
+                                    <p class="m-b-0">NEW</p>
+                                </li>
+                                <li class="notification" style="margin-bottom:30px">
+                                    <div class="media">
+                                        <img class="img-radius" src="../assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>John Doe</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>5 min</span></p>
+                                            <p>New ticket Added</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="n-title">
+                                    <p class="m-b-0">EARLIER</p>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="../assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>10 min</span></p>
+                                            <p>Prchace New Theme and make payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="../assets/images/user/avatar-1.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>12 min</span></p>
+                                            <p>currently login</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="notification">
+                                    <div class="media">
+                                        <img class="img-radius" src="../assets/images/user/avatar-2.jpg" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <p><strong>Joseph William</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>30 min</span></p>
+                                            <p>Prchace New Theme and make payment</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="noti-footer">
+                                <a href="#!">show all</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+
+                            <ul class="pro-body">
+                                <li><a asp-controller="Admin" asp-action="ProfileAdmin" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+                                <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
+                                <li><a asp-controller="Login" asp-action="Logout" class="dropdown-item"><i class="feather icon-lock"></i>Logout </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper container">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <div class="main-body">
+                        <div class="page-wrapper">
+
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/toasty.js"></script>
+
+    <script src="/assets/js/vendor-all.min.js" asp-append-version="true"></script>
+    <script src="/assets/js/plugins/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="/assets/js/ripple.js" asp-append-version="true"></script>
+
+    <!-- Apex Chart -->
+    <script src="~/assets/js/plugins/apexcharts.min.js" asp-append-version="true"></script>
+
+    <script src="/assets/js/pcoded.min.js" asp-append-version="true"></script>
+    <script src="/assets/js/horizontal-menu.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" asp-append-version="true"></script>
+    <script src="~/js/popup.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+<!---->
+<script>
+    (function () {
+        if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
+            return;
+        }
+        try {
+            window.layoutHelpers._getSetting("Rtl")
+            window.layoutHelpers.setCollapsed(
+                localStorage.getItem('layoutCollapsed') === 'true',
+                false
+            );
+        } catch (e) { }
+    })();
+    $(function () {
+        $('#layout-sidenav').each(function () {
+            new SideNav(this, {
+                orientation: $(this).hasClass('sidenav-horizontal') ? 'horizontal' : 'vertical'
+            });
+        });
+        $('body').on('click', '.layout-sidenav-toggle', function (e) {
+            e.preventDefault();
+            window.layoutHelpers.toggleCollapsed();
+            if (!window.layoutHelpers.isSmallScreen()) {
+                try {
+                    localStorage.setItem('layoutCollapsed', String(window.layoutHelpers.isCollapsed()));
+                } catch (e) { }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $("#pcoded").pcodedmenu({
+            themelayout: 'horizontal',
+            MenuTrigger: 'hover',
+            SubMenuTrigger: 'hover',
+        });
+    });
+</script>
+<style>
+</style>

@@ -1,0 +1,135 @@
+﻿@using BusniessLayer.Entity
+@model ProjectMembers
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllProjectCreated">AllProject</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ horizontal-layout ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Deadline
+                                </th>
+
+                                <th>
+                                    State
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                        </tfoot>
+                        <tbody>
+
+                            @foreach (var item in (List<ProjectMembers>)ViewBag.ProjectForTeamLeaedr)
+                            {
+                                <tr id="@item.ProjectId">
+
+                                    <td>
+                                        @item.Project.ProjectName
+                                    </td>
+                                    <td>
+                                        @item.Project.ProjectDescrption
+                                    </td>
+                                    <td>
+                                        @item.Project.DeadLine
+                                    </td>
+
+                                    @{
+
+                                        if (item.Project.StateId == 1)
+                                        {
+                                            <td>
+                                                <span class="badge badge-success">Completed</span>
+                                            </td>
+                                        }
+                                        else if (item.Project.StateId == 3)
+                                        {
+                                            <td>
+                                                <span class="badge badge-warning">Pending</span>
+                                            </td>
+                                        }
+                                        else if (item.Project.StateId == 4)
+                                        {
+                                            <td>
+                                                <span class="badge badge-danger">Rejected</span>
+                                            </td>
+                                        }
+
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $("#Serachajax").on('keyup', function () {
+        var search = $(this).val();
+        var arr = [];
+
+        $.ajax({
+            method: 'POST',
+            url: '/Project/SearchProjct',
+            data: { Search: search },
+            success: function (data) {
+                if (data.length == 0) {
+                    $("#footer").remove();
+                    $('tfoot').append('<tr id="footer"><td><div style="color:red">' +
+                        'No Records Are Found'
+                        + '</div ></td></tr>')
+                }
+                $('tbody tr').each(function () {
+                    $(this).prop('hidden', true);
+                })
+                $.each(data, function (index, values) {
+                    $("#footer").remove();
+                    $('tbody tr').each(function () {
+                        var x = $(this).attr('id');
+                        if (x == values.projectId) {
+                            $("#" + x).prop('hidden', false)
+                        }
+                    })
+
+                });
+                if ($("#Serachajax").val() == 0) {
+                    $("#footer").remove();
+                    $('tbody tr').each(function () {
+                        $(this).prop('hidden', false);
+                    })
+                }
+            },
+
+        })
+    })
+</script>

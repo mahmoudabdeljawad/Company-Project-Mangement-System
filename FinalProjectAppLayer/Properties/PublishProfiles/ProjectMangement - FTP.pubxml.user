@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZRmyvWK6u0CWRROLvXEbPgAAAAACAAAAAAAQZgAAAAEAACAAAADC0h6jX20SoJjcU3lR+gD/GZh5mdoBgHIMMSsmbT3E9AAAAAAOgAAAAAIAACAAAAB3ObegHWjiFumgmc86EJMjhPFp45c1dKsT591dNsOk84AAAAA6HMT3DSegLFeUNXB/XittaDdr5zqgjfbhjC09pwdazwBgl3oZQjxgR55fBv7vTnJ2Jj0LjSD2iXKtPkJy7jeZp80PgXgzgCr/oMbsOTMBOxpuG4QiV8eBZ/8zyQJxYmYsKrWFZMet8IcuVzuH4BLRpCS2iJ4vjN12TY2AdoeX0UAAAADGQR/VLfirXcsdb5I2rUeglLpgHfcwPo+Yw0ePnDewZC+6NcPivrqjr/mrLJOLBGo9TKSegO0Jy9//ZdlbQYlT</EncryptedPassword>
+    <History>False|2022-09-10T10:16:10.5842146Z;False|2022-09-10T13:11:30.9133347+03:00;False|2022-09-10T13:04:18.0713325+03:00;</History>
+    <_PublishTargetUrl>ftps://waws-prod-db3-263.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="api-ms-win-core-console-l1-1-0.dll">
+      <publishTime>04/20/2018 03:05:20</publishTime>
+    </File>
+    <File Include="api-ms-win-core-datetime-l1-1-0.dll">
+      <publishTime>04/20/2018 03:05:20</publishTime>
+    </File>
+    <File Include="api-ms-win-core-debug-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:06</publishTime>
+    </File>
+    <File Include="api-ms-win-core-errorhandling-l1-1-0.dll">
+      <publishTime>04/20/2018 02:55:58</publishTime>
+    </File>
+    <File Include="api-ms-win-core-file-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-file-l1-2-0.dll">
+      <publishTime>04/20/2018 02:55:58</publishTime>
+    </File>
+    <File Include="api-ms-win-core-file-l2-1-0.dll">
+      <publishTime>04/20/2018 02:55:56</publishTime>
+    </File>
+    <File Include="api-ms-win-core-handle-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-heap-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:06</publishTime>
+    </File>
+    <File Include="api-ms-win-core-interlocked-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-libraryloader-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-localization-l1-2-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-memory-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:00</publishTime>
+    </File>
+    <File Include="api-ms-win-core-namedpipe-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:02</publishTime>
+    </File>
+    <File Include="api-ms-win-core-processenvironment-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:06</publishTime>
+    </File>
+    <File Include="api-ms-win-core-processthreads-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:10</publishTime>
+    </File>
+    <File Include="api-ms-win-core-processthreads-l1-1-1.dll">
+      <publishTime>04/20/2018 02:56:10</publishTime>
+    </File>
+    <File Include="api-ms-win-core-profile-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-core-rtlsupport-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-core-string-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-core-synch-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-core-synch-l1-2-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-core-sysinfo-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:16</publishTime>
+    </File>
+    <File Include="api-ms-win-core-timezone-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:18</publishTime>
+    </File>
+    <File Include="api-ms-win-core-util-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:16</publishTime>
+    </File>
+    <File Include="API-MS-Win-core-xstate-l2-1-0.dll">
+      <publishTime>07/13/2022 01:01:42</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-conio-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:16</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-convert-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:16</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-environment-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-filesystem-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:18</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-heap-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:16</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-locale-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:20</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-math-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:20</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-multibyte-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:08</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-private-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:08</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-process-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:10</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-runtime-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:12</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-stdio-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-string-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:14</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-time-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:08</publishTime>
+    </File>
+    <File Include="api-ms-win-crt-utility-l1-1-0.dll">
+      <publishTime>04/20/2018 02:56:20</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>08/13/2022 13:46:29</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>09/10/2022 11:17:36</publishTime>
+    </File>
+    <File Include="BusniessLayer.pdb">
+      <publishTime>09/09/2022 23:20:58</publishTime>
+    </File>
+    <File Include="clrcompression.dll">
+      <publishTime>07/13/2022 20:08:18</publishTime>
+    </File>
+    <File Include="clretwrc.dll">
+      <publishTime>07/13/2022 01:01:40</publishTime>
+    </File>
+    <File Include="dbgshim.dll">
+      <publishTime>07/13/2022 01:01:38</publishTime>
+    </File>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>02/09/2021 23:12:02</publishTime>
+    </File>
+    <File Include="FinalProjectAppLayer.deps.json">
+      <publishTime>09/10/2022 13:15:04</publishTime>
+    </File>
+    <File Include="FinalProjectAppLayer.exe">
+      <publishTime>09/10/2022 13:15:02</publishTime>
+    </File>
+    <File Include="FinalProjectAppLayer.pdb">
+      <publishTime>09/10/2022 13:15:02</publishTime>
+    </File>
+    <File Include="FinalProjectAppLayer.runtimeconfig.json">
+      <publishTime>09/10/2022 11:29:18</publishTime>
+    </File>
+    <File Include="FinalProjectAppLayer.Views.pdb">
+      <publishTime>09/10/2022 13:15:04</publishTime>
+    </File>
+    <File Include="libman.json">
+      <publishTime>08/25/2022 06:36:34</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Authentication.OAuth.dll">
+      <publishTime>07/14/2022 18:19:40</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Authorization.dll">
+      <publishTime>07/14/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Forms.dll">
+      <publishTime>07/14/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Server.dll">
+      <publishTime>07/14/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Components.Web.dll">
+      <publishTime>07/14/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.CookiePolicy.dll">
+      <publishTime>07/14/2022 18:19:42</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Cryptography.KeyDerivation.dll">
+      <publishTime>07/14/2022 18:19:44</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.DataProtection.Extensions.dll">
+      <publishTime>07/14/2022 18:19:44</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll">
+      <publishTime>04/20/2022 02:56:38</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Diagnostics.HealthChecks.dll">
+      <publishTime>07/14/2022 18:19:44</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Http.Connections.Common.dll">
+      <publishTime>07/14/2022 18:19:46</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Http.Connections.dll">
+      <publishTime>07/14/2022 18:19:46</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

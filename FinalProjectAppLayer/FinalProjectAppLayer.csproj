@@ -1,0 +1,189 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-FinalProjectAppLayer-D3E21B64-A087-49BD-96E0-34D09B4F84D0</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="wwwroot\assets\fonts\fa-brands-400.svg" />
+    <None Include="wwwroot\assets\fonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\assets\fonts\fa-regular-400.svg" />
+    <None Include="wwwroot\assets\fonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\assets\fonts\fa-solid-900.svg" />
+    <None Include="wwwroot\assets\fonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\assets\fonts\feather.svg" />
+    <None Include="wwwroot\assets\fonts\Flaticon.svg" />
+    <None Include="wwwroot\assets\fonts\Flaticon.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOUehpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOVuhpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOX-hpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXehpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXuhpOqc.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFUZ0bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFVp0bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFVZ0b.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFW50bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWJ0bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWp0bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWZ0bbck.woff2" />
+    <None Include="wwwroot\assets\fonts\pct.svg" />
+    <None Include="wwwroot\assets\images\cd-arrow.svg" />
+    <None Include="wwwroot\assets\js\analytics.js" />
+    <None Include="wwwroot\assets\js\analytics.min.js" />
+    <None Include="wwwroot\assets\js\horizontal-menu.js" />
+    <None Include="wwwroot\assets\js\menu-setting.js" />
+    <None Include="wwwroot\assets\js\menu-setting.min.js" />
+    <None Include="wwwroot\assets\js\pages\ac-alert.js" />
+    <None Include="wwwroot\assets\js\pages\ac-datepicker.js" />
+    <None Include="wwwroot\assets\js\pages\ac-lightbox.js" />
+    <None Include="wwwroot\assets\js\pages\ac-notification.js" />
+    <None Include="wwwroot\assets\js\pages\ac-rangeslider.js" />
+    <None Include="wwwroot\assets\js\pages\ac-rating.js" />
+    <None Include="wwwroot\assets\js\pages\chart-apex.js" />
+    <None Include="wwwroot\assets\js\pages\chart-chart-custom.js" />
+    <None Include="wwwroot\assets\js\pages\chart-highchart-custom.js" />
+    <None Include="wwwroot\assets\js\pages\chart-morris-custom.js" />
+    <None Include="wwwroot\assets\js\pages\chart-peity-custom.js" />
+    <None Include="wwwroot\assets\js\pages\chart.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-analytics.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-crm.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-help.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-main.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-project.js" />
+    <None Include="wwwroot\assets\js\pages\dashboard-sale.js" />
+    <None Include="wwwroot\assets\js\pages\data-advance-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-api-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-autofill-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-basic-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-buttons-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-column-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-export-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-header-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-key-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-plugin-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-reorder-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-responsive-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-row-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-scroller-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-select-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-source-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-styling-custom.js" />
+    <None Include="wwwroot\assets\js\pages\data-table-custom.js" />
+    <None Include="wwwroot\assets\js\pages\editable-custom.js" />
+    <None Include="wwwroot\assets\js\pages\form-advance-custom.js" />
+    <None Include="wwwroot\assets\js\pages\form-masking-custom.js" />
+    <None Include="wwwroot\assets\js\pages\form-picker-custom.js" />
+    <None Include="wwwroot\assets\js\pages\form-select-custom.js" />
+    <None Include="wwwroot\assets\js\pages\form-validation.js" />
+    <None Include="wwwroot\assets\js\pages\google-maps.js" />
+    <None Include="wwwroot\assets\js\pages\invoice-list.js" />
+    <None Include="wwwroot\assets\js\pages\jquery.knob-custom.min.js" />
+    <None Include="wwwroot\assets\js\pages\jquery.wavify.js" />
+    <None Include="wwwroot\assets\js\pages\map-api.js" />
+    <None Include="wwwroot\assets\js\pages\notify-event.js" />
+    <None Include="wwwroot\assets\js\pages\page-croper.js" />
+    <None Include="wwwroot\assets\js\pages\task-board.js" />
+    <None Include="wwwroot\assets\js\pages\todo.js" />
+    <None Include="wwwroot\assets\js\pages\TweenMax.min.js" />
+    <None Include="wwwroot\assets\js\pages\widget-data.js" />
+    <None Include="wwwroot\assets\js\pcoded.js" />
+    <None Include="wwwroot\assets\js\pcoded.min.js" />
+    <None Include="wwwroot\assets\js\plugins\apexcharts.min.js" />
+    <None Include="wwwroot\assets\js\plugins\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\plugins\gmaps.min.js" />
+    <None Include="wwwroot\assets\js\plugins\jquery-ui.min.js" />
+    <None Include="wwwroot\assets\js\plugins\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\assets\js\plugins\prism.js" />
+    <None Include="wwwroot\assets\js\ripple.js" />
+    <None Include="wwwroot\assets\js\uikit.js" />
+    <None Include="wwwroot\assets\js\uikit.min.js" />
+    <None Include="wwwroot\assets\js\vendor-all.js" />
+    <None Include="wwwroot\assets\js\vendor-all.min.js" />
+    <None Include="wwwroot\assets\js\waves.min.js" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\login\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\login\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\login\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <None Include="wwwroot\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <None Include="wwwroot\login\js\main.js" />
+    <None Include="wwwroot\login\vendor\animsition\js\animsition.js" />
+    <None Include="wwwroot\login\vendor\animsition\js\animsition.min.js" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\login\vendor\bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\login\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\login\vendor\bootstrap\js\popper.js" />
+    <None Include="wwwroot\login\vendor\bootstrap\js\popper.min.js" />
+    <None Include="wwwroot\login\vendor\bootstrap\js\tooltip.js" />
+    <None Include="wwwroot\login\vendor\countdowntime\countdowntime.js" />
+    <None Include="wwwroot\login\vendor\daterangepicker\daterangepicker.js" />
+    <None Include="wwwroot\login\vendor\daterangepicker\moment.js" />
+    <None Include="wwwroot\login\vendor\daterangepicker\moment.min.js" />
+    <None Include="wwwroot\login\vendor\jquery\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\login\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <None Include="wwwroot\login\vendor\select2\select2.js" />
+    <None Include="wwwroot\login\vendor\select2\select2.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.25" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusniessLayer\BusniessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Login\" />
+    <Folder Include="wwwroot\Img\Cover\" />
+  </ItemGroup>
+
+</Project>

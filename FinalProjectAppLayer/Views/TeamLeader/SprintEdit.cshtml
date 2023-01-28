@@ -1,0 +1,68 @@
+﻿@model BusniessLayer.Entity.Sprint
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a ><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a >All Project</a></li>
+                    <li class="breadcrumb-item"><a >Prject Sprints</a></li>
+                    <li class="breadcrumb-item"><a href="#">Edit Sprints</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ horizontal-layout ] start -->
+    <div class="col-sm-6">
+        <div class="card">
+
+            <div class="card-body">
+                            <form asp-action="SprintEditDone">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <input asp-for="SprintId" class="form-control" hidden />
+
+                                <div class="form-group">
+                                    <label asp-for="SprintName" class="control-label"> Name</label>
+                                    <input asp-for="SprintName" class="form-control" />
+                                    <span asp-validation-for="SprintName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="sprintDescrption" class="control-label">Descrption</label>
+                                    <input asp-for="sprintDescrption" class="form-control" />
+                                    <span asp-validation-for="sprintDescrption" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="StartDate" class="control-label">Start Date</label>
+                                    <input asp-for="StartDate" class="form-control" />
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EndDate" class="control-label">End Date</label>
+                                    <input asp-for="EndDate" class="form-control" />
+                                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                                </div>
+
+                                <input asp-for="ProjectId" class="form-control" hidden />
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

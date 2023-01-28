@@ -1,0 +1,81 @@
+﻿@using BusniessLayer.Entity
+@model Work
+<div id="EditModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    @{if (Model.StateId == 2)
+                        {
+                            <span style="color:green">Approved Work</span>
+                        }
+                        else if (Model.StateId == 4)
+                        {
+
+
+                            <span style="color:red">Rejected Work</span>
+
+                        }
+                        else
+                        {
+                            <span>Work View</span>
+
+                        }
+                    }
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                
+                   
+                  
+                    <dl class="row border ">
+
+                        <dt class="col-sm-4">
+                            Name :
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.WorkName)
+                        </dd>
+                        <dt class="col-sm-4">
+                            Description :
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.WorkDescrption)
+                        </dd>  @{
+                            if (Model.StateId == 3 || Model.StateId == 2)
+                            {
+
+                            }
+                            else
+                            {
+                                <dt class="col-sm-4">
+                                    Reject Note :
+                                </dt>
+                                <dd class="col-sm-8">
+                                    <span style="color:red">
+                                        @Html.DisplayFor(model => model.Rejects.LastOrDefault(x => x.WorkId == model.WorkId).RejectedNote)
+                                    </span>
+                                </dd>
+
+                            }
+                        }
+                        <dt class="col-sm-4">
+                            Content Type :
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.WorkAttachments.LastOrDefault(x => x.WorkId == model.WorkId).ContentType)
+                        </dd>
+                        <dt class="col-sm-4">
+                            Work Attachment :
+                        </dt>
+                        <dd class="col-sm-8">
+                            <a href="/TeamMember/ViewAttachment?WorkId=@Model.WorkId" target="_blank">
+                                @Model.WorkAttachments.LastOrDefault(x => x.WorkId == Model.WorkId).FileName
+                            </a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>

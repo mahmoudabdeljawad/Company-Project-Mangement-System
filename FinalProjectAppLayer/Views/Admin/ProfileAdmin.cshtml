@@ -1,0 +1,97 @@
+﻿@using BusniessLayer.DTO
+@model AdminDto
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Admin</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#!">AdminProfile</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+<!-- [ Main Content ] start -->
+<div class="row">
+    <div class="col-sm-7">
+        <div class="card">
+            <div class="card-header">
+                <h5>Profile</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <label>Profile Pictur</label><br />
+                            <img src="~/@Model.ImageUrl" style="width:35%" />
+                        </div>
+                        <form action="/Admin/ProfileEdit" method="post" enctype="multipart/form-data">
+                            <input asp-for="Id" name="Id" class="form-control" hidden>
+
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" disabled class="form-control" id="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FirstName"></label>
+                                <input asp-for="FirstName" class="form-control" id="firstname" aria-describedby="emailHelp" disabled>
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LastName"></label>
+                                <input asp-for="LastName" disabled class="form-control" id="lastname" aria-describedby="emailHelp">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="phidden" hidden>
+                                <label asp-for="Password">Password</label>
+                                <input asp-for="Password" class="form-control" id="Password">
+                            </div>
+                            <div class="form-group" id="ImgHidden" hidden>
+                                <label >Profile Pictur</label>
+                                <input type="file" name="Img" class="form-control" id="ImageFile">
+                            </div>
+                            <div id="action">
+                            </div>
+                        </form>
+                        <button id="edit" class="btn  btn-success">Edit</button>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#edit").click(function () {
+        $("#edit").hide();
+        $("#action").append('<button class="btn  btn-info">' + 'Save' + '</button><button class="btn  " id="Cancel">' + 'Cancel' + '</button>');
+        $('#Email').prop('disabled', false);
+        $('#firstname').prop('disabled', false);
+        $('#lastname').prop('disabled', false);
+        $('#phidden').prop('hidden', false);
+        $('#ImgHidden').prop('hidden', false);
+
+        $("#Cancel").click(function () {
+            $("#action").empty();
+            $("#edit").show();
+            $('#Email').prop('disabled', true);
+            $('#firstname').prop('disabled', true);
+            $('#lastname').prop('disabled', true);
+            $('#phidden').prop('hidden', true);
+            $('#ImgHidden').prop('hidden', true);
+
+        })
+    })
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

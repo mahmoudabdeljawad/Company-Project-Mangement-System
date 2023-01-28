@@ -1,0 +1,57 @@
+﻿@model BusniessLayer.Entity.Duty
+
+@{
+    ViewData["Title"] = "EditDuty";
+    Layout = "~/Views/Shared/TeamMemberLayout.cshtml";
+}
+
+<h1>EditDuty</h1>
+
+<h4>Duty</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDuty">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DutyId" class="control-label"></label>
+                <input asp-for="DutyId" class="form-control" />
+                <span asp-validation-for="DutyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DutyName" class="control-label"></label>
+                <input asp-for="DutyName" class="form-control" />
+                <span asp-validation-for="DutyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DutyDescrption" class="control-label"></label>
+                <input asp-for="DutyDescrption" class="form-control" />
+                <span asp-validation-for="DutyDescrption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SprintId" class="control-label"></label>
+                <input asp-for="SprintId" class="form-control" />
+                <span asp-validation-for="SprintId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamMemberId" class="control-label"></label>
+                <input asp-for="TeamMemberId" class="form-control" />
+                <span asp-validation-for="TeamMemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateId" class="control-label"></label>
+                <input asp-for="StateId" class="form-control" />
+                <span asp-validation-for="StateId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

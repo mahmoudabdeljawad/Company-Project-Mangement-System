@@ -1,0 +1,132 @@
+﻿@model IEnumerable<BusniessLayer.Entity.Work>
+
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Work </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a asp-action="AllTeamLeader">All Work Created</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12 col-lg-8">
+        <div class="card">
+            <div class="card-body">
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                         
+                            <th>
+name                            </th>
+                            <th>
+description                            </th>    
+                            <th>
+                                Team Member
+                            </th>
+                            <th>
+                                Duty 
+                            </th>
+                            <th>
+                                State
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="AjaxAppend"></tbody>
+                    <tbody id="AjaxHide">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                              
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WorkDescrption)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Duty.TeamMember.FitstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Duty.DutyName)
+                                </td>
+                                <td>
+                                    @if (item.StateId == 2)
+                                    {
+                                        <span class="badge badge-success">Approved</span>
+                                    }
+                                    else if (item.StateId == 3)
+                                    {
+                                        <span class="badge badge-warning">Pending</span>
+
+                                    }
+                                    else if (item.StateId == 4)
+                                    {
+                                        <span class="badge badge-danger">Rejected</span>
+
+                                    }
+                                </td>
+                            
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#Serachajax").keyup(function () {
+        var search = $("#Serachajax").val();
+        $.ajax({
+            method: 'POST',
+            url: '/Work/WrokSearch',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: { Search: search },
+            success: function (data) {
+                $("#AjaxHide").hide();
+                $("#AjaxAppend").empty();
+
+                $.each(data, function (index, value) {
+                    $("#AjaxAppend").append('<tr><td>' + value.workId + '</td><td>' + value.workName + '</td><td>' + value.workDescrption
+                        + '</td><td>' + value.userName + '</td><td>' + value.dutiesName + '</td>'
+                        + '<td><span id="id' + value.workId +'">' +''+ '</span></td>'
+                        +
+                        '</tr>');
+                    if (value.stateId == 2) {
+                      
+                        $("#id" + value.workId).addClass("badge badge-success");
+                        $("#id" + value.workId).append("Approve");
+                    } else if (value.stateId == 3){
+                        $("#id" + value.workId).addClass("badge badge-warning");
+                        $("#id" + value.workId).append("Pending");
+
+                    } else if (value.stateId == 4){
+                        $("#id" + value.workId).addClass("badge badge-danger");
+                        $("#id" + value.workId).append("Reject")
+
+                    }
+                })
+             
+                if ($("#Serachajax").val() == 0) {
+                    $("#AjaxAppend").empty();
+                    $("#AjaxHide").show();
+                }
+              
+            },
+        })
+
+    })
+</script>
